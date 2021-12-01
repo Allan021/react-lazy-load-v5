@@ -1,4 +1,4 @@
-import { About, Users, Home, Customer } from "./pages";
+import { About, Users, Customer, Home } from "./pages";
 
 interface Route {
   path: string;
