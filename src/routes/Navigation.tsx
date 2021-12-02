@@ -1,41 +1,18 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { routes } from "../DashBoard/routes";
 
-import logo from "../logo.svg";
+import { Menu } from "../utils/components/Menu";
+import { MainRoutes } from "./MainRoutes";
 
 export const Navigation = () => {
   return (
     <Router>
       <div className="main-layout">
-        <nav>
-          <img src={logo} alt="React Logo" />
-          <ul>
-            {routes.map(({ path, name }, i) => (
-              <li key={i}>
-                <NavLink to={path} activeClassName="nav-active" exact>
-                  {name}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
+        <Menu routes={routes} fondo={true} />
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          {routes.map(({ Component, path }, index) => (
-            <Route key={index} path={path} render={Component} exact />
-          ))}
-
-          <Redirect to={routes[0].path} />
-        </Switch>
+        <MainRoutes />
       </div>
     </Router>
   );

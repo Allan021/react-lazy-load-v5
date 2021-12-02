@@ -5,3 +5,5 @@ export const Customer = () => {
     </div>
   );
 };
+
+export default Customer;
