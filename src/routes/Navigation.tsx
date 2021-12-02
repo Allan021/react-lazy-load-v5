@@ -4,7 +4,6 @@ import { routes } from "../DashBoard/routes";
 
 import { Menu } from "../utils/components/Menu";
 import { MainRoutes } from "./MainRoutes";
-
 export const Navigation = () => {
   return (
     <Router>
