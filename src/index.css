@@ -8,6 +8,7 @@ body {
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: ;
 }
 
 code {
@@ -29,6 +30,11 @@ nav {
   overflow-y: scroll;
   text-align: center;
   width: 250px;
+}
+
+.navigation {
+  height: auto;
+  overflow-y: auto;
 }
 nav ul {
   align-items: center;
@@ -52,4 +58,27 @@ nav li a {
 .nav-active {
   color: grey;
   transition: all 0.3s ease-out;
+}
+
+.ul {
+  text-decoration: none;
+}
+.grasa {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+  margin-bottom: 3px;
+
+  color: white;
+}
+
+ul li a {
+  list-style: none;
+  margin-bottom: 8px;
+
+  color: white;
 }
