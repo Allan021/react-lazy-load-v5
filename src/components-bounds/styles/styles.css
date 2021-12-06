@@ -1,0 +1,33 @@
+.bg-dark {
+  background-color: rgb(55, 55, 55);
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.medium-image {
+  width: 100%;
+  border-radius: 20px;
+  padding: 1px;
+}
+
+.buttons > button,
+.buttons > div {
+  border-color: #fff;
+  color: white;
+}
+
+.shopping-cart {
+  top: 0px;
+  position: absolute;
+  right: 10px;
+}
+
+.shopping-cart > .mini-cart {
+  width: 100px;
+}

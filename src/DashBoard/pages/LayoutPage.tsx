@@ -21,6 +21,10 @@ export const LayoutPage = () => {
     <div>
       <h2>Router del DashBoard de mi App</h2>
       <Menu fondo={true} logo={""} routes={menuRoutes} normalLinks={true} />
+
+      {currentRoutes.map(({ path, Component }) => (
+        <Route path={path} render={() => <Component />} />
+      ))}
     </div>
   );
 };
