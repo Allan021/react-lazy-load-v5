@@ -1,3 +1,4 @@
+// import { LogoComponent } from "../../assets/logo.svg";
 export const About = () => {
   return (
     <div>

@@ -1,31 +1,20 @@
-import { About, Users, Home, Customer } from "./pages";
+import { lazy } from "react";
+import LoginScreen from "../auth/pages/LoginScreen";
+import { Route } from "../models/Route";
 
-interface Route {
-  path: string;
-  children?: [];
-  name: string;
-  Component: () => JSX.Element;
-}
+export const DashBoard = lazy(
+  () => import(/*webpackChunkName:"DashBoard"*/ "./pages/LayoutPage")
+);
 
 export const routes: Route[] = [
   {
-    path: "/",
-    Component: Home,
-    name: "Home Screen",
+    path: "/login",
+    Component: LoginScreen,
+    name: "LoginScreen",
   },
   {
-    path: "/about",
-    Component: About,
-    name: "About Screen",
-  },
-  {
-    path: "/users",
-    Component: Users,
-    name: "User Screen",
-  },
-  {
-    path: "/customer",
-    Component: Customer,
-    name: "Customer Screen",
+    path: "/dashboard",
+    Component: DashBoard,
+    name: "DashBoard",
   },
 ];
