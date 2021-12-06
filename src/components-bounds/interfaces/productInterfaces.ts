@@ -1,4 +1,3 @@
-import { ReactElement } from "react";
 import { Props as ProductButtonsProps } from "../components/ProductButtons";
 import { Props as ProductTitleProps } from "../components/ProductTitle";
 import { Props as ProductImageProps } from "../components/ProductImage";
@@ -16,7 +15,7 @@ export interface ProductCardProps {
   counter: number;
 }
 
-export interface ShoppingCartProps extends products {
+export interface ProductInCart extends products {
   counter: number;
 }
 

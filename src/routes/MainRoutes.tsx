@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Redirect, Route, Switch } from "react-router";
-import { routes } from "../DashBoard/routes";
+import { routes } from "./routes";
 
 export const MainRoutes = () => {
   return (

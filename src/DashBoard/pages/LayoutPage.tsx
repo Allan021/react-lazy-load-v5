@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { Route, Switch, useRouteMatch } from "react-router";
-import { About, Customer } from ".";
+import { Route, useRouteMatch } from "react-router";
 import { Menu } from "../../utils/components/Menu";
 import { generateNestedRoutes } from "../../utils/generateNestedRoutes";
 import { DashBoardRoutes } from "./routes";

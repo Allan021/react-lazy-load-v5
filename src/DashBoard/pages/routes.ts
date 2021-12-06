@@ -1,4 +1,5 @@
 import { About, Customer, Home } from ".";
+import { ProductScreen } from "../../components-bounds/pages/ProductScreen";
 import { Route } from "../../models/Route";
 
 export const DashBoardRoutes: Route[] = [
@@ -16,5 +17,10 @@ export const DashBoardRoutes: Route[] = [
     path: "home",
     Component: Home,
     name: "Home Screen",
+  },
+  {
+    path: "products",
+    Component: ProductScreen,
+    name: "Products Screen",
   },
 ];

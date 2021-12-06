@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { routes } from "../DashBoard/routes";
+import { routes } from "./routes";
 
 import { Menu } from "../utils/components/Menu";
 import { MainRoutes } from "./MainRoutes";

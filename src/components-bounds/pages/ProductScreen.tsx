@@ -5,10 +5,7 @@ import {
   ProductTitle,
   ProductButtons,
 } from "../components";
-import {
-  onChangeArgs,
-  ShoppingCartProps,
-} from "../interfaces/productInterfaces";
+import { onChangeArgs, ProductInCart } from "../interfaces/productInterfaces";
 import "../styles/styles.css";
 export const productDummy = {
   id: "1",
@@ -31,11 +28,14 @@ export const products = [
 
 export const ProductScreen = () => {
   //aca manejare el estado de mis productos
-  const [shoppingCart, setShoppingCart] = useState<ShoppingCartProps>();
+  //lo que digo con estos [], es que sera un objeto con un chingo de propiedades de tipo string que al ir agregando elementos se iran incrementando las propiedades
+  const [shoppingCart, setShoppingCart] = useState<{
+    [key: string]: ProductInCart;
+  }>({});
 
-  const handleShoppingCart = (e: onChangeArgs) => {
-    console.log(e);
-  };
+  console.log(shoppingCart);
+
+  const handleShoppingCart = ({ product, counter }: onChangeArgs) => {};
 
   return (
     <div>
@@ -44,6 +44,7 @@ export const ProductScreen = () => {
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {products.map((product) => (
           //muy buena manera de pasar todas las props
+
           <ProductCard
             key={product.id}
             product={product}
@@ -73,6 +74,9 @@ export const ProductScreen = () => {
           <ProductCard.Buttons />
         </ProductCard>
       </div>
+      {JSON.stringify(shoppingCart)}
     </div>
   );
 };
+
+export default ProductScreen;
