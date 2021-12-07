@@ -42,7 +42,7 @@ export const ProductScreen = () => {
       <h1>Seccion de Productos</h1>
 
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {products.map((product) => (
+        {/* {products.map((product) => (
           //muy buena manera de pasar todas las props
 
           <ProductCard
@@ -55,7 +55,11 @@ export const ProductScreen = () => {
             <ProductTitle className="text-white" />
             <ProductButtons className={"buttons"} />
           </ProductCard>
-        ))}
+        ))} */}
+        <ProductCard product={productDummy} className="bg-dark mini-cart">
+          <ProductImage />
+          <ProductButtons className={"buttons"} />
+        </ProductCard>
       </div>
       <div className="shopping-cart">
         <ProductCard product={productDummy} className="bg-dark mini-cart">
