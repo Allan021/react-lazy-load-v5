@@ -33,18 +33,23 @@ export const ProductScreen = () => {
     [key: string]: ProductInCart;
   }>({});
 
-  console.log(shoppingCart);
+  const handleShoppingCart = ({ product, counter }: onChangeArgs) => {
+    setShoppingCart((oldShopingInCart) => {
+      if (counter <= 0) {
+        const { [product.id]: ElementToDelete, ...rest } = oldShopingInCart;
+        return rest;
+      }
 
-  const handleShoppingCart = ({ product, counter }: onChangeArgs) => {};
+      return { ...oldShopingInCart, [product.id]: { ...product, counter } };
+    });
+  };
 
   return (
     <div>
       <h1>Seccion de Productos</h1>
 
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {/* {products.map((product) => (
-          //muy buena manera de pasar todas las props
-
+        {products.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
@@ -55,11 +60,7 @@ export const ProductScreen = () => {
             <ProductTitle className="text-white" />
             <ProductButtons className={"buttons"} />
           </ProductCard>
-        ))} */}
-        <ProductCard product={productDummy} className="bg-dark mini-cart">
-          <ProductImage />
-          <ProductButtons className={"buttons"} />
-        </ProductCard>
+        ))}
       </div>
       <div className="shopping-cart">
         <ProductCard product={productDummy} className="bg-dark mini-cart">

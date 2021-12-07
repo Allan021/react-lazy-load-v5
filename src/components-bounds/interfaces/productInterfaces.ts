@@ -28,5 +28,5 @@ export interface ProductCardHOC {
 
 export interface onChangeArgs {
   product: products;
-  counter?: number;
+  counter: number;
 }
