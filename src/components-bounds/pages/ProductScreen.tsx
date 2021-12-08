@@ -63,23 +63,18 @@ export const ProductScreen = () => {
         ))}
       </div>
       <div className="shopping-cart">
-        <ProductCard product={productDummy} className="bg-dark mini-cart">
-          <ProductImage />
-          <ProductButtons className={"buttons"} />
-        </ProductCard>
-        <ProductCard
-          product={{
-            id: "2",
-            img: "./coffee-mug2.png",
-            title: "Taza de cafe con Memes",
-          }}
-          className="mini-cart"
-        >
-          <ProductCard.Image />
-          <ProductCard.Buttons />
-        </ProductCard>
+        {Object.entries(shoppingCart).map(([key, productInCart]) => (
+          <ProductCard
+            key={key}
+            product={productInCart}
+            className="mini-cart bg-dark"
+            value={productInCart.counter}
+          >
+            <ProductImage />
+            <ProductButtons className={"buttons"} />
+          </ProductCard>
+        ))}
       </div>
-      {JSON.stringify(shoppingCart)}
     </div>
   );
 };

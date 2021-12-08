@@ -16,6 +16,7 @@ export interface Props {
   className?: string;
   style?: React.CSSProperties;
   onChange?: (args: onChangeArgs) => void;
+  value?: number;
 }
 //llamar al hook en la rama principal
 export const ProductCard = ({
@@ -23,8 +24,9 @@ export const ProductCard = ({
   children,
   className,
   onChange,
+  value,
 }: Props) => {
-  const { counter, increaseBy } = useProduct({ product, onChange });
+  const { counter, increaseBy } = useProduct({ product, onChange, value });
   return (
     <ProductProvider value={{ counter, increaseBy, product }}>
       <div className={`${styles.productCard} ${className}`}>

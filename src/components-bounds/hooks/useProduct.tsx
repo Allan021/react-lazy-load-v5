@@ -1,12 +1,17 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { onChangeArgs, products } from "../interfaces/productInterfaces";
 
 interface UseProductProps {
   product: products;
   onChange?: (args: onChangeArgs) => void;
+  value?: number;
 }
 
-export const useProduct = ({ product, onChange }: UseProductProps) => {
+export const useProduct = ({
+  product,
+  onChange,
+  value = 0,
+}: UseProductProps) => {
   const [counter, setCounter] = useState(0);
 
   const increaseBy = useCallback(
@@ -19,6 +24,10 @@ export const useProduct = ({ product, onChange }: UseProductProps) => {
     },
     [counter, onChange, product]
   );
+
+  useEffect(() => {
+    setCounter(value);
+  }, [value]);
 
   return { counter, increaseBy };
 };
