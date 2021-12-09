@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "img": "./coffee-mug.png",
+    "title": "Mi Taza de Cafe"
+  },
+  {
+    "id": "2",
+    "img": "./coffee-mug2.png",
+    "title": "Taza de cafe con Memes"
+  },
+  {
+    "id": "3",
+    "img": "./coffee-mug2.png",
+    "title": "Taza de Alex"
+  }
+]

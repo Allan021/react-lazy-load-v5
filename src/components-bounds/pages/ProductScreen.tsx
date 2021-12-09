@@ -1,34 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ProductCard,
   ProductImage,
   ProductTitle,
   ProductButtons,
 } from "../components";
-import { onChangeArgs, ProductInCart } from "../interfaces/productInterfaces";
+import { useGetProducts } from "../hooks/useGetProducts";
+import {
+  onChangeArgs,
+  ProductInCart,
+  products,
+} from "../interfaces/productInterfaces";
 import "../styles/styles.css";
-export const productDummy = {
-  id: "1",
-  img: "./coffee-mug.png",
-  title: "Mi Taza de Cafe",
-};
-
-export const products = [
-  {
-    id: "1",
-    img: "./coffee-mug.png",
-    title: "Mi Taza de Cafe",
-  },
-  {
-    id: "2",
-    img: "./coffee-mug2.png",
-    title: "Taza de cafe con Memes",
-  },
-];
 
 export const ProductScreen = () => {
   //aca manejare el estado de mis productos
+  const [products, setProducts] = useState<products[]>([]);
   //lo que digo con estos [], es que sera un objeto con un chingo de propiedades de tipo string que al ir agregando elementos se iran incrementando las propiedades
+
+  useEffect(() => {
+    fetch("../data/products.json")
+      .then((resp) => resp.json())
+      .then((body) => {
+        console.log(body.data);
+      });
+  }, []);
+
   const [shoppingCart, setShoppingCart] = useState<{
     [key: string]: ProductInCart;
   }>({});
@@ -55,6 +52,7 @@ export const ProductScreen = () => {
             product={product}
             className="bg-dark"
             onChange={handleShoppingCart}
+            value={shoppingCart[product.id]?.counter || 0}
           >
             <ProductImage />
             <ProductTitle className="text-white" />
