@@ -5,44 +5,13 @@ import {
   ProductTitle,
   ProductButtons,
 } from "../components";
-import { onChangeArgs, ProductInCart } from "../interfaces/productInterfaces";
+import { useGetProducts } from "../hooks/useGetProducts";
+import { useShoppingCart } from "../hooks/useShoppingCart";
 import "../styles/styles.css";
-export const productDummy = {
-  id: "1",
-  img: "./coffee-mug.png",
-  title: "Mi Taza de Cafe",
-};
-
-export const products = [
-  {
-    id: "1",
-    img: "./coffee-mug.png",
-    title: "Mi Taza de Cafe",
-  },
-  {
-    id: "2",
-    img: "./coffee-mug2.png",
-    title: "Taza de cafe con Memes",
-  },
-];
 
 export const ProductScreen = () => {
-  //aca manejare el estado de mis productos
-  //lo que digo con estos [], es que sera un objeto con un chingo de propiedades de tipo string que al ir agregando elementos se iran incrementando las propiedades
-  const [shoppingCart, setShoppingCart] = useState<{
-    [key: string]: ProductInCart;
-  }>({});
-
-  const handleShoppingCart = ({ product, counter }: onChangeArgs) => {
-    setShoppingCart((oldShopingInCart) => {
-      if (counter <= 0) {
-        const { [product.id]: ElementToDelete, ...rest } = oldShopingInCart;
-        return rest;
-      }
-
-      return { ...oldShopingInCart, [product.id]: { ...product, counter } };
-    });
-  };
+  const { products } = useGetProducts("../data/products.json");
+  const { shoppingCart, handleShoppingCart } = useShoppingCart();
 
   return (
     <div>
@@ -55,6 +24,7 @@ export const ProductScreen = () => {
             product={product}
             className="bg-dark"
             onChange={handleShoppingCart}
+            value={shoppingCart[product.id]?.counter || 0}
           >
             <ProductImage />
             <ProductTitle className="text-white" />
@@ -69,6 +39,7 @@ export const ProductScreen = () => {
             product={productInCart}
             className="mini-cart bg-dark"
             value={productInCart.counter}
+            onChange={handleShoppingCart}
           >
             <ProductImage />
             <ProductButtons className={"buttons"} />
