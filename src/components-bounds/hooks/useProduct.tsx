@@ -12,21 +12,22 @@ export const useProduct = ({
   onChange,
   value = 0,
 }: UseProductProps) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(value);
+
   const isControlled = useRef(!!onChange);
+
   const increaseBy = useCallback(
     (value: number) => {
+      //si el card esta siendo controlado entoces lo actualizo asi y si no lo actualizo de otra manera
       if (isControlled.current) {
-        onChange!({ product, counter: value });
+        return onChange!({ product, counter: value });
       }
 
       const newValue = Math.max(counter + value, 0);
 
       setCounter(newValue);
-
-      onChange && onChange({ product, counter: newValue }); //estos son los argumentos que le mando al onChange
     },
-    [counter, onChange, product]
+    [onChange, product, counter]
   );
 
   useEffect(() => {

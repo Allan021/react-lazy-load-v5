@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   ProductCard,
   ProductImage,
@@ -6,40 +5,12 @@ import {
   ProductButtons,
 } from "../components";
 import { useGetProducts } from "../hooks/useGetProducts";
-import {
-  onChangeArgs,
-  ProductInCart,
-  products,
-} from "../interfaces/productInterfaces";
+import { useShoppingCart } from "../hooks/useShoppingCart";
 import "../styles/styles.css";
 
 export const ProductScreen = () => {
-  //aca manejare el estado de mis productos
-  const [products, setProducts] = useState<products[]>([]);
-  //lo que digo con estos [], es que sera un objeto con un chingo de propiedades de tipo string que al ir agregando elementos se iran incrementando las propiedades
-
-  useEffect(() => {
-    fetch("../data/products.json")
-      .then((resp) => resp.json())
-      .then((body) => {
-        console.log(body.data);
-      });
-  }, []);
-
-  const [shoppingCart, setShoppingCart] = useState<{
-    [key: string]: ProductInCart;
-  }>({});
-
-  const handleShoppingCart = ({ product, counter }: onChangeArgs) => {
-    setShoppingCart((oldShopingInCart) => {
-      if (counter <= 0) {
-        const { [product.id]: ElementToDelete, ...rest } = oldShopingInCart;
-        return rest;
-      }
-
-      return { ...oldShopingInCart, [product.id]: { ...product, counter } };
-    });
-  };
+  const { products } = useGetProducts("../data/products.json");
+  const { shoppingCart, handleShoppingCart } = useShoppingCart();
 
   return (
     <div>
@@ -67,6 +38,7 @@ export const ProductScreen = () => {
             product={productInCart}
             className="mini-cart bg-dark"
             value={productInCart.counter}
+            onChange={handleShoppingCart}
           >
             <ProductImage />
             <ProductButtons className={"buttons"} />
