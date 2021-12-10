@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductCardContext } from "./ProductCard";
+import { ProductCardContext } from "../contexts/ProductCardContext";
 import styles from "../styles/styles.module.css";
 export interface Props {
   title?: string;

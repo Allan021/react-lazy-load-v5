@@ -3,22 +3,25 @@ import { Props as ProductTitleProps } from "../components/ProductTitle";
 import { Props as ProductImageProps } from "../components/ProductImage";
 import { Props } from "../components/ProductCard";
 
-export interface products {
+export interface Product {
   id: string;
   title: string;
   img?: string;
 }
 
-export interface ProductCardProps {
-  product: products;
+export interface ProductContextProps {
+  counter: number;
+  maxCount?: number;
+  isMaxCountReached?: boolean;
+  product: Product;
   increaseBy: (value: number) => void;
+}
+
+export interface ProductInCart extends Product {
   counter: number;
 }
 
-export interface ProductInCart extends products {
-  counter: number;
-}
-
+//Inyectar componentes hijos
 export interface ProductCardHOC {
   ({ product, children }: Props): JSX.Element;
   Title: (Props: ProductTitleProps) => JSX.Element;
@@ -27,6 +30,20 @@ export interface ProductCardHOC {
 }
 
 export interface onChangeArgs {
-  product: products;
+  product: Product;
   counter: number;
+}
+
+export interface initialValues {
+  counter?: number;
+  maxCount?: number;
+}
+
+export interface ProductCardHandlers {
+  count: number;
+  isMaxCountReached: boolean;
+  maxCount?: number;
+  product: Product;
+  increaseBy: (value: number) => void;
+  reset: () => void;
 }

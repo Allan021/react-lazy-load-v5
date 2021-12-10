@@ -31,3 +31,9 @@
 .shopping-cart > .mini-cart {
   width: 100px;
 }
+
+.disabled {
+  border-color: gray !important;
+  border-left: 1px solid gray !important;
+  background-color: gray !important;
+}

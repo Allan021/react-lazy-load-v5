@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { products } from "../interfaces/productInterfaces";
+import { Product } from "../interfaces/productInterfaces";
 
 export const useGetProducts = (url: string) => {
-  const [products, setProducts] = useState<products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     fetch(url, {
@@ -11,7 +11,7 @@ export const useGetProducts = (url: string) => {
         Accept: "application/json",
       },
     })
-      .then((resp) => resp.json() as Promise<products[]>)
+      .then((resp) => resp?.json() as Promise<Product[]>)
       .then(setProducts);
   }, [url]);
 

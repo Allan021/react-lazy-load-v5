@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { validateImages } from "../utils/validateImage";
-import { ProductCardContext } from "./ProductCard";
 import styles from "../styles/styles.module.css";
+import { ProductCardContext } from "../contexts/ProductCardContext";
 
 export interface Props {
   img?: string;
@@ -11,6 +11,7 @@ export interface Props {
 
 export const ProductImage = ({ img, className, style }: Props) => {
   const { img: image } = useContext(ProductCardContext).product;
+  useContext(ProductCardContext);
   const imageToShow = validateImages({ image, img });
   return (
     <img
