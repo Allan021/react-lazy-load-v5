@@ -22,7 +22,7 @@ export const ProductScreen = () => {
           initialValues={{ counter: 4, maxCount: 10 }}
           className="bg-dark"
         >
-          {({ reset, maxCount, product }) => (
+          {({ reset, isMaxCountReached, increaseBy }) => (
             <>
               <ProductImage
                 className="custom-image"
@@ -31,6 +31,10 @@ export const ProductScreen = () => {
               <ProductTitle className="text-white" />
               <ProductButtons className={"buttons"} />
               <button onClick={reset}>Reset</button>
+              <button onClick={() => increaseBy(-2)}> -2 </button>
+              {!isMaxCountReached && (
+                <button onClick={() => increaseBy(2)}> +2 </button>
+              )}
             </>
           )}
         </ProductCard>
