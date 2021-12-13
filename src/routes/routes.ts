@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { Route } from "../models/Route";
 import { About, Customer, Home } from "../DashBoard/pages";
+import { RegisterScreen } from "../auth/pages/RegisterScreen";
 
 export const ProductScreen = lazy(
   () =>
@@ -10,6 +11,11 @@ export const ProductScreen = lazy(
 );
 
 export const routes: Route[] = [
+  {
+    path: "/register",
+    Component: RegisterScreen,
+    name: "Register Screen",
+  },
   {
     path: "/products",
     Component: ProductScreen,

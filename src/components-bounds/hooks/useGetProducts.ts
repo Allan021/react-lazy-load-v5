@@ -17,3 +17,4 @@ export const useGetProducts = (url: string) => {
 
   return { products };
 };
+Array.of("xD");
