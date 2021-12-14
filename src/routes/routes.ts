@@ -2,6 +2,9 @@ import { lazy } from "react";
 import { Route } from "../models/Route";
 import { About, Customer, Home } from "../DashBoard/pages";
 import { RegisterScreen } from "../auth/pages/RegisterScreen";
+import { FormikBasicPage } from "../auth/pages/FormikBasicPage";
+import { FormikYupPage } from "../auth/pages/FormikYupPage";
+import { FormikComponentPage } from "../auth/pages/FormikComponents";
 
 export const ProductScreen = lazy(
   () =>
@@ -35,5 +38,20 @@ export const routes: Route[] = [
     path: "/home",
     Component: Home,
     name: "Home Screen",
+  },
+  {
+    path: "/formik",
+    Component: FormikBasicPage,
+    name: "Formik Basic Page",
+  },
+  {
+    path: "/formik-yup",
+    Component: FormikYupPage,
+    name: "Formik Yup Page",
+  },
+  {
+    path: "/formik-components",
+    Component: FormikComponentPage,
+    name: "Formik Component Page",
   },
 ];
