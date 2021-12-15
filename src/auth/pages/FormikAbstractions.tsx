@@ -1,12 +1,13 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import { MyCheckbox, MySelect, MyTextInput } from "../components";
 
 import "../styles.css";
 
-export const FormikComponentPage = () => {
+export const FormikAbstractions = () => {
   return (
     <div>
-      <h1>Formik Component Register</h1>
+      <h1>Formik Abstractions Register</h1>
       <Formik
         initialValues={{
           firstName: "",
@@ -36,34 +37,34 @@ export const FormikComponentPage = () => {
       >
         {() => (
           <Form>
-            <label htmlFor="firstName">Name</label>
-            <Field name="firstName" placeholder="Your First Name" />
-            <ErrorMessage name="firstName" component={"span"} />
+            <MyTextInput
+              name="firstName"
+              label="First Name"
+              id="firstName"
+              placeholder="Primer Name"
+            />
+            <MyTextInput
+              name="lastName"
+              label="Last Name"
+              placeholder="Last Name"
+              type="text"
+            />
+            <MyTextInput
+              name="email"
+              type="email"
+              label="Email Addres"
+              placeholder="owner@example.com"
+            />
 
-            <label htmlFor="lastName">Last Name</label>
-            <Field name="lastName" placeholder="Your Last Name" />
-            <ErrorMessage name="lastName" component={"span"} />
-
-            <label htmlFor="email">Email</label>
-            <Field name="email" placeholder="Your Email" />
-            <ErrorMessage name="email" component={"span"} />
-
-            <label htmlFor="email">Grado de Conocimiento</label>
-
-            <Field name="degrees" as="select">
+            <MySelect name="degrees" label="Jobs Degrees">
               <option value="">Select one thing</option>
               <option value="junior">Junior Developer</option>
               <option value="database">Admin Data Base</option>
               <option value="middle">Middle Developer</option>
               <option value="senior">Senior Developer</option>
-            </Field>
+            </MySelect>
 
-            <ErrorMessage name="degrees" component={"span"} />
-            <label htmlFor="terms">
-              Terminos y condiciones
-              <Field name="terms" type="checkbox" />
-            </label>
-            <ErrorMessage name="terms" component={"span"} />
+            <MyCheckbox name="terms" label="Terminos y Condiciones" />
 
             <button type="submit">Submit</button>
           </Form>

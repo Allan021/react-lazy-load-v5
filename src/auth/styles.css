@@ -5,7 +5,8 @@ form {
 }
 
 input,
-select {
+select,
+.text-input {
   margin-top: 5px;
   outline: none;
   padding: 10px;

@@ -1,10 +1,14 @@
 import { lazy } from "react";
 import { Route } from "../models/Route";
 import { About, Customer, Home } from "../DashBoard/pages";
-import { RegisterScreen } from "../auth/pages/RegisterScreen";
-import { FormikBasicPage } from "../auth/pages/FormikBasicPage";
-import { FormikYupPage } from "../auth/pages/FormikYupPage";
-import { FormikComponentPage } from "../auth/pages/FormikComponents";
+import {
+  FormikBasicPage,
+  FormikAbstractions,
+  FormikComponentPage,
+  FormikYupPage,
+  RegisterScreen,
+} from "../auth/pages";
+import { RegisterFormikScreen } from "../auth/pages/RegisterFormikScreen";
 
 export const ProductScreen = lazy(
   () =>
@@ -53,5 +57,15 @@ export const routes: Route[] = [
     path: "/formik-components",
     Component: FormikComponentPage,
     name: "Formik Component Page",
+  },
+  {
+    path: "/formik-abstractions",
+    Component: FormikAbstractions,
+    name: "Formik Abstractions",
+  },
+  {
+    path: "/registro-formik",
+    Component: RegisterFormikScreen,
+    name: "Register con formik",
   },
 ];

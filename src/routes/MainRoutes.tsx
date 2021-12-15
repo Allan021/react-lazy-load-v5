@@ -7,7 +7,7 @@ export const MainRoutes = () => {
     <Suspense fallback={<span>Loading...</span>}>
       <Switch>
         {routes.map(({ Component, path }, index) => (
-          <Route key={index} path={path} render={() => <Component />} />
+          <Route key={index} path={path} exact render={() => <Component />} />
         ))}
 
         <Redirect to={routes[0].path} />
